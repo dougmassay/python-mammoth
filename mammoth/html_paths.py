@@ -1,4 +1,4 @@
-import cobble
+import cbbl as cobble
 
 from . import html
 

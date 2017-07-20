@@ -8,7 +8,8 @@ def img_element(func):
         attributes = func(image).copy()
         if image.alt_text:
             attributes["alt"] = image.alt_text
-            
+        if image.title_text:
+            attributes["title"] = image.title_text
         return [html.element("img", attributes)]
     
     return convert_image

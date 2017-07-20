@@ -376,27 +376,25 @@ def _create_reader(numbering, content_types, relationships, styles, docx_file, f
     
     def inline(element):
         properties = element.find_child_or_null("wp:docPr").attributes
-        if properties.get("descr", "").strip():
-            alt_text = properties.get("descr")
-        else:
-            alt_text = properties.get("title")
+        alt_text = properties.get("descr", "").strip()
+        title_text = properties.get("title", "").strip()
         blips = element.find_children("a:graphic") \
             .find_children("a:graphicData") \
             .find_children("pic:pic") \
             .find_children("pic:blipFill") \
             .find_children("a:blip")
-        return _read_blips(blips, alt_text)
+        return _read_blips(blips, alt_text, title_text)
     
-    def _read_blips(blips, alt_text):
-        return _ReadResult.concat(lists.map(lambda blip: _read_blip(blip, alt_text), blips))
+    def _read_blips(blips, alt_text, title_text):
+        return _ReadResult.concat(lists.map(lambda blip: _read_blip(blip, alt_text, title_text), blips))
     
-    def _read_blip(element, alt_text):
-        return _read_image(lambda: _find_blip_image(element), alt_text)
+    def _read_blip(element, alt_text, title_text):
+        return _read_image(lambda: _find_blip_image(element), alt_text, title_text)
     
-    def _read_image(find_image, alt_text):
+    def _read_image(find_image, alt_text, title_text):
         image_path, open_image = find_image()
         content_type = content_types.find_content_type(image_path)
-        image = documents.image(alt_text=alt_text, content_type=content_type, open=open_image)
+        image = documents.image(alt_text=alt_text, title_text=title_text, content_type=content_type, open=open_image)
         
         if content_type in ["image/png", "image/gif", "image/jpeg", "image/svg+xml", "image/tiff"]:
             messages = []

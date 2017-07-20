@@ -4,7 +4,7 @@ import sys
 import os
 import shutil
 
-import mammoth
+import mmth
 from . import writers
 
 

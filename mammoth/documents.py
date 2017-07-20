@@ -1,4 +1,4 @@
-import cobble
+import cbbl as cobble
 
 
 class Element(object):
@@ -93,6 +93,7 @@ class Tab(Element):
 @cobble.data
 class Image(Element):
     alt_text = cobble.field()
+    title_text = cobble.field()
     content_type = cobble.field()
     open = cobble.field()
 

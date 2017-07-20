@@ -1,6 +1,6 @@
 import xml.sax
 
-import cobble
+import cbbl as cobble
 
 
 @cobble.data

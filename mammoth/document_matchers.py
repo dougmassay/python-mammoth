@@ -1,6 +1,6 @@
 import collections
 
-import cobble
+import cbbl as cobble
 
 
 def paragraph(style_id=None, style_name=None, numbering=None):
