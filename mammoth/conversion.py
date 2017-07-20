@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 
 from functools import partial
 
-import cobble
+import cbbl as cobble
 
 from . import documents, results, html_paths, images, writers, html
 from .docx.files import InvalidFileReferenceError
@@ -235,12 +235,13 @@ class _DocumentConverter(documents.element_visitor(args=1)):
         self._note_references.append(note_reference)
         note_number = len(self._note_references)
         return [
-            html.element("sup", {}, [
-                html.element("a", {
-                    "href": "#" + self._note_html_id(note_reference),
-                    "id": self._note_ref_html_id(note_reference),
-                }, [html.text("[{0}]".format(note_number))])
-            ])
+            #html.element("sup", {}, [
+            html.element("a", {
+                "href": "#" + self._note_html_id(note_reference),
+                "id": self._note_ref_html_id(note_reference),
+                "class": "note",
+            }, [html.text("[{0}]".format(note_number))])
+            #])
         ]
 
 
