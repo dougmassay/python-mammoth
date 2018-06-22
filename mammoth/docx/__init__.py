@@ -1,7 +1,7 @@
 from functools import partial
 import os
 
-import cobble
+import cbbl as cobble   
 
 from .. import results, lists, zips
 from .document_xml import read_document_xml_element

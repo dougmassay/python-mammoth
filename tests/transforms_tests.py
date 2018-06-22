@@ -1,4 +1,4 @@
-import cobble
+import cbbl as cobble
 from nose.tools import assert_equal, istest
 
 from mammoth import documents, transforms
