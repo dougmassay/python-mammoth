@@ -440,7 +440,7 @@ def _create_reader(numbering, content_types, relationships, styles, docx_file, f
             return _empty_result_with_message(warning)
         else:
             title = element.attributes.get("o:title")
-            return _read_image(lambda: _find_embedded_image(relationship_id), title)
+            return _read_image(lambda: _find_embedded_image(relationship_id), title, title)
     
     def note_reference_reader(note_type):
         def note_reference(element):
