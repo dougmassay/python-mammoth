@@ -1,4 +1,4 @@
-import cobble
+import cbbl as cobble
 
 from ..documents import numbering_level
 from .styles_xml import Styles
